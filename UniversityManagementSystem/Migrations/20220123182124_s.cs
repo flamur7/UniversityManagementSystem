@@ -2,7 +2,7 @@
 
 namespace UniversityManagementSystem.Migrations
 {
-    public partial class TabelLink : Migration
+    public partial class s : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

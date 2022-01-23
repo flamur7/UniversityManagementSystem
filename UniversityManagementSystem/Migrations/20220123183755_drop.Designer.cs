@@ -10,8 +10,8 @@ using UniversityManagementSystem.Data;
 namespace UniversityManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220123170853_LinkTabel")]
-    partial class LinkTabel
+    [Migration("20220123183755_drop")]
+    partial class drop
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -321,15 +321,10 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("NationalityId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("NationalityName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NationalityId");
-
-                    b.HasIndex("NationalityId1");
 
                     b.ToTable("Nationalitys");
                 });
@@ -383,6 +378,9 @@ namespace UniversityManagementSystem.Migrations
                     b.Property<int>("BranchId")
                         .HasColumnType("int");
 
+                    b.Property<int>("NationalityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("StaffName")
                         .HasColumnType("nvarchar(max)");
 
@@ -396,6 +394,8 @@ namespace UniversityManagementSystem.Migrations
 
                     b.HasIndex("BranchId");
 
+                    b.HasIndex("NationalityId");
+
                     b.ToTable("Staffs");
                 });
 
@@ -405,9 +405,6 @@ namespace UniversityManagementSystem.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Birthday")
-                        .HasColumnType("int");
 
                     b.Property<string>("Birthplace")
                         .HasColumnType("nvarchar(max)");
@@ -426,6 +423,9 @@ namespace UniversityManagementSystem.Migrations
 
                     b.Property<int>("ProgramUniversityId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("StudentBirthday")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");
@@ -516,13 +516,6 @@ namespace UniversityManagementSystem.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("UniversityManagementSystem.Models.Nationality", b =>
-                {
-                    b.HasOne("UniversityManagementSystem.Models.Nationality", null)
-                        .WithMany("Nationalities")
-                        .HasForeignKey("NationalityId1");
-                });
-
             modelBuilder.Entity("UniversityManagementSystem.Models.Staff", b =>
                 {
                     b.HasOne("UniversityManagementSystem.Models.Branch", "Branch")
@@ -531,7 +524,15 @@ namespace UniversityManagementSystem.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("UniversityManagementSystem.Models.Nationality", "Nationality")
+                        .WithMany("Staffs")
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Branch");
+
+                    b.Navigation("Nationality");
                 });
 
             modelBuilder.Entity("UniversityManagementSystem.Models.Student", b =>
@@ -543,7 +544,7 @@ namespace UniversityManagementSystem.Migrations
                         .IsRequired();
 
                     b.HasOne("UniversityManagementSystem.Models.Nationality", "Nationality")
-                        .WithMany()
+                        .WithMany("Students")
                         .HasForeignKey("NationalityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -570,7 +571,9 @@ namespace UniversityManagementSystem.Migrations
 
             modelBuilder.Entity("UniversityManagementSystem.Models.Nationality", b =>
                 {
-                    b.Navigation("Nationalities");
+                    b.Navigation("Staffs");
+
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("UniversityManagementSystem.Models.ProgramUniversity", b =>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniversityManagementSystem.Models
@@ -12,9 +13,11 @@ namespace UniversityManagementSystem.Models
         public string ParentName { get; set; }
         public string Surname { get; set; }
 
-        [Display(Name = "Birthday")]
         [DataType(DataType.Date)]
-        public DataType Birthday { get; set; }
+        [Display(Name = "Student Birthday")]
+        public DateTime? StudentBirthday { get; set; }
+
+
         public string Birthplace { get; set; }
 
 

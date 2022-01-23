@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniversityManagementSystem.Models
@@ -23,5 +24,6 @@ namespace UniversityManagementSystem.Models
         public int NationalityId { get; set; }
         [ForeignKey("NationalityId")]
         public virtual Nationality Nationality { get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
     }
 }

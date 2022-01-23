@@ -1,0 +1,49 @@
+﻿@model UniversityManagementSystem.Models.Professor
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Professor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProfessorName" class="control-label"></label>
+                <input asp-for="ProfessorName" class="form-control" />
+                <span asp-validation-for="ProfessorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfessorSurname" class="control-label"></label>
+                <input asp-for="ProfessorSurname" class="form-control" />
+                <span asp-validation-for="ProfessorSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfessorJob" class="control-label"></label>
+                <select asp-for="ProfessorJob" class="form-control"></select>
+                <span asp-validation-for="ProfessorJob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProffessorTitle" class="control-label"></label>
+                <input asp-for="ProffessorTitle" class="form-control" />
+                <span asp-validation-for="ProffessorTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

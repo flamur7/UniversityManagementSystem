@@ -10,8 +10,8 @@ using UniversityManagementSystem.Data;
 namespace UniversityManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220123172031_Tabel-Link")]
-    partial class TabelLink
+    [Migration("20220123182124_s")]
+    partial class s
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -406,9 +406,6 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Birthday")
-                        .HasColumnType("int");
-
                     b.Property<string>("Birthplace")
                         .HasColumnType("nvarchar(max)");
 
@@ -426,6 +423,9 @@ namespace UniversityManagementSystem.Migrations
 
                     b.Property<int>("ProgramUniversityId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("StudentBirthday")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");

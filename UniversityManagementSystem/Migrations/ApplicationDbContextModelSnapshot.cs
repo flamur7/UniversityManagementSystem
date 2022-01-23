@@ -404,9 +404,6 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Birthday")
-                        .HasColumnType("int");
-
                     b.Property<string>("Birthplace")
                         .HasColumnType("nvarchar(max)");
 
@@ -424,6 +421,9 @@ namespace UniversityManagementSystem.Migrations
 
                     b.Property<int>("ProgramUniversityId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("StudentBirthday")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");
