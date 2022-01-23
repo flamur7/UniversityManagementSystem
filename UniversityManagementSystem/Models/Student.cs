@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniversityManagementSystem.Models
 {
@@ -11,8 +12,28 @@ namespace UniversityManagementSystem.Models
         public string ParentName { get; set; }
         public string Surname { get; set; }
 
+        [Display(Name = "Birthday")]
+        [DataType(DataType.Date)]
         public DataType Birthday { get; set; }
         public string Birthplace { get; set; }
+
+
+        [Display(Name = "Program")]
+        public int ProgramUniversityId { get; set; }
+        [ForeignKey("ProgramUniversityId")]
+        public virtual ProgramUniversity ProgramUniversity { get; set; }
+
+
+        [Display(Name = "Nationality")]
+        public int NationalityId { get; set; }
+        [ForeignKey("NationalityId")]
+        public virtual Nationality Nationality { get; set; }
+
+
+        [Display(Name = "Branch")]
+        public int BranchId { get; set; }
+        [ForeignKey("BranchId")]
+        public virtual Branch Branch { get; set; }
 
     }
 }

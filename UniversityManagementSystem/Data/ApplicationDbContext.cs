@@ -22,7 +22,7 @@ namespace UniversityManagementSystem.Data
         public virtual DbSet<Grade> Grades { get; set; }
         public virtual DbSet<Nationality> Nationalitys { get; set; }
         public virtual DbSet<Professor> Professors { get; set; }
-        public virtual DbSet<Program> Programs { get; set; }
+        public virtual DbSet<ProgramUniversity> ProgramUniversity { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<TodoItem> TodoItems { get; set; }

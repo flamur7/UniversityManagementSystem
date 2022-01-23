@@ -3,14 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UniversityManagementSystem.Models
 {
-    public class Branch
+    public class ProgramUniversity
     {
         [Key]
-        public int BranchId { get; set; }
-        public string BranchName { get; set; }
+        public int ProgramUniversityId { get; set; }
+        public string ProgramUniversityName { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }
-        public virtual ICollection<Staff> Staffs { get; set; }
 
     }
 }

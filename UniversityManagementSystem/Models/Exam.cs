@@ -6,6 +6,8 @@ namespace UniversityManagementSystem.Models
     {
         [Key]
         public int ExamId { get; set; }
+
+        [DataType(DataType.Date)]
         public DataType ExamDay { get; set; }
         public string Subject { get; set; }
     }
