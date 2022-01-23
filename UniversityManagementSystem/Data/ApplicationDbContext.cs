@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UniversityManagementSystem.Models;
 
 namespace UniversityManagementSystem.Data
 {
@@ -12,5 +13,19 @@ namespace UniversityManagementSystem.Data
             : base(options)
         {
         }
+
+        public virtual DbSet<Assessment> Assessments { get; set; }
+        public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Exam> Exams { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
+        public virtual DbSet<Grade> Grades { get; set; }
+        public virtual DbSet<Nationality> Nationalitys { get; set; }
+        public virtual DbSet<Professor> Professors { get; set; }
+        public virtual DbSet<Program> Programs { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<TodoItem> TodoItems { get; set; }
+
     }
 }

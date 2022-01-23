@@ -2,11 +2,10 @@
 
 namespace UniversityManagementSystem.Models
 {
-    public class Branch
+    public class Grade
     {
         [Key]
-        public int BranchId { get; set; }
-        public string BranchName { get; set; }
-
+        public int GradeId { get; set; }
+        public string GradeName { get; set; }
     }
 }
