@@ -13,14 +13,7 @@ namespace UniversityManagementSystem.Models
         public string ParentName { get; set; }
         public string Surname { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name = "Student Birthday")]
-        public DateTime? StudentBirthday { get; set; }
-
-
         public string Birthplace { get; set; }
-
-
         [Display(Name = "Program")]
         public int ProgramUniversityId { get; set; }
         [ForeignKey("ProgramUniversityId")]

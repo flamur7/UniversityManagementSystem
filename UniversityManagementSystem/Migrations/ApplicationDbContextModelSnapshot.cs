@@ -256,7 +256,12 @@ namespace UniversityManagementSystem.Migrations
                     b.Property<string>("DepartmentName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("StaffId")
+                        .HasColumnType("int");
+
                     b.HasKey("DepartmentId");
+
+                    b.HasIndex("StaffId");
 
                     b.ToTable("Departments");
                 });
@@ -268,13 +273,25 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ExamDay")
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProfessorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProgramUniversityId")
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ExamId");
+
+                    b.HasIndex("BranchId");
+
+                    b.HasIndex("ProfessorId");
+
+                    b.HasIndex("ProgramUniversityId");
 
                     b.ToTable("Exams");
                 });
@@ -319,10 +336,15 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("NationalityId1")
+                        .HasColumnType("int");
+
                     b.Property<string>("NationalityName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("NationalityId");
+
+                    b.HasIndex("NationalityId1");
 
                     b.ToTable("Nationalitys");
                 });
@@ -334,7 +356,7 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProfessorJob")
+                    b.Property<int>("NationalityId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProfessorName")
@@ -347,6 +369,8 @@ namespace UniversityManagementSystem.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProfessorId");
+
+                    b.HasIndex("NationalityId");
 
                     b.ToTable("Professors");
                 });
@@ -385,8 +409,8 @@ namespace UniversityManagementSystem.Migrations
                     b.Property<string>("StaffRole")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("StartJob")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("StartJob")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("StaffId");
 
@@ -421,9 +445,6 @@ namespace UniversityManagementSystem.Migrations
 
                     b.Property<int>("ProgramUniversityId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime?>("StudentBirthday")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");
@@ -514,6 +535,62 @@ namespace UniversityManagementSystem.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("UniversityManagementSystem.Models.Department", b =>
+                {
+                    b.HasOne("UniversityManagementSystem.Models.Staff", "Staf")
+                        .WithMany("Departments")
+                        .HasForeignKey("StaffId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Staf");
+                });
+
+            modelBuilder.Entity("UniversityManagementSystem.Models.Exam", b =>
+                {
+                    b.HasOne("UniversityManagementSystem.Models.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityManagementSystem.Models.Professor", "Professor")
+                        .WithMany()
+                        .HasForeignKey("ProfessorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("UniversityManagementSystem.Models.ProgramUniversity", "ProgramUniversity")
+                        .WithMany()
+                        .HasForeignKey("ProgramUniversityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Branch");
+
+                    b.Navigation("Professor");
+
+                    b.Navigation("ProgramUniversity");
+                });
+
+            modelBuilder.Entity("UniversityManagementSystem.Models.Nationality", b =>
+                {
+                    b.HasOne("UniversityManagementSystem.Models.Nationality", null)
+                        .WithMany("Nationalitys")
+                        .HasForeignKey("NationalityId1");
+                });
+
+            modelBuilder.Entity("UniversityManagementSystem.Models.Professor", b =>
+                {
+                    b.HasOne("UniversityManagementSystem.Models.Nationality", "Nationality")
+                        .WithMany()
+                        .HasForeignKey("NationalityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Nationality");
+                });
+
             modelBuilder.Entity("UniversityManagementSystem.Models.Staff", b =>
                 {
                     b.HasOne("UniversityManagementSystem.Models.Branch", "Branch")
@@ -569,6 +646,8 @@ namespace UniversityManagementSystem.Migrations
 
             modelBuilder.Entity("UniversityManagementSystem.Models.Nationality", b =>
                 {
+                    b.Navigation("Nationalitys");
+
                     b.Navigation("Staffs");
 
                     b.Navigation("Students");
@@ -577,6 +656,11 @@ namespace UniversityManagementSystem.Migrations
             modelBuilder.Entity("UniversityManagementSystem.Models.ProgramUniversity", b =>
                 {
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("UniversityManagementSystem.Models.Staff", b =>
+                {
+                    b.Navigation("Departments");
                 });
 #pragma warning restore 612, 618
         }

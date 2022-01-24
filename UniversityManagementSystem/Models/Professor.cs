@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UniversityManagementSystem.Models
 {
@@ -8,9 +10,14 @@ namespace UniversityManagementSystem.Models
         public int ProfessorId { get; set; }
         public string ProfessorName { get; set; }
         public string ProfessorSurname { get; set; }
-
-        [DataType(DataType.Date)]
-        public DataType ProfessorJob { get; set; }
         public string ProffessorTitle { get; set; }
+
+
+        [Display(Name = "Nationality")]
+        public int NationalityId { get; set; }
+        [ForeignKey("NationalityId")]
+        public virtual Nationality Nationality { get; set; }
+
+
     }
 }
