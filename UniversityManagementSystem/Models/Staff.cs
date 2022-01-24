@@ -12,10 +12,6 @@ namespace UniversityManagementSystem.Models
         public string StaffName { get; set; }
         public string StaffRole { get; set; }
 
-
-        [DataType(DataType.Date)]
-        public DateTime StartJob { get; set; }
-
         [Display(Name = "Branch Work")]
         public int BranchId { get; set; }
         [ForeignKey("BranchId")]

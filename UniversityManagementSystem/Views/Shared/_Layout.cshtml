@@ -11,13 +11,23 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UniversityManagementSystem</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UMS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin
+                                </a><div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Nationalities" asp-action="Index">Nationality</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Index">Branch</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="ProgramUniversities" asp-action="Index">Program Universities</a>
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Grades" asp-action="Index">Grades</a>
+                         
+                                </div>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Student</a>
                         </li>
@@ -25,16 +35,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Staffs" asp-action="Index">Staffs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Branches" asp-action="Index">Branch</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Professors" asp-action="Index">Professors</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Staffs" asp-action="Index">Staffs</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Assessments" asp-action="Index">Assessments</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Staffs" asp-action="Index">Staffs</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Exams" asp-action="Index">Exams</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />

@@ -49,8 +49,8 @@ namespace UniversityManagementSystem.Views
         // GET: Staffs/Create
         public IActionResult Create()
         {
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchId");
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityId");
+            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
             return View();
         }
 
@@ -67,8 +67,8 @@ namespace UniversityManagementSystem.Views
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchId", staff.BranchId);
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityId", staff.NationalityId);
+            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
             return View(staff);
         }
 
@@ -85,8 +85,8 @@ namespace UniversityManagementSystem.Views
             {
                 return NotFound();
             }
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchId", staff.BranchId);
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityId", staff.NationalityId);
+            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
             return View(staff);
         }
 
@@ -122,8 +122,8 @@ namespace UniversityManagementSystem.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchId", staff.BranchId);
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityId", staff.NationalityId);
+            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
             return View(staff);
         }
 

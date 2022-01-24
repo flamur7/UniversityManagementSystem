@@ -12,6 +12,7 @@ namespace UniversityManagementSystem.Models
 
         public virtual ICollection<Student> Students { get; set; }
         public virtual ICollection<Staff> Staffs { get; set; }
+        public virtual ICollection<Professor> Professors { get; set; }
         
     }
 }

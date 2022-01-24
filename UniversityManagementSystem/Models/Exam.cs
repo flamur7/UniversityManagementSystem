@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -24,5 +25,7 @@ namespace UniversityManagementSystem.Models
         public int ProfessorId { get; set; }
         [ForeignKey("ProfessorId")]
         public virtual Professor Professor { get; set; }
+
+        public virtual ICollection<Assessment> Assessments { get; set; }
     }
 }

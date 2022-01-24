@@ -20,9 +20,6 @@
                 @Html.DisplayNameFor(model => model.StaffRole)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartJob)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Branch)
             </th>
             <th>
@@ -40,14 +37,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.StaffRole)
             </td>
+
             <td>
-                @Html.DisplayFor(modelItem => item.StartJob)
+                @Html.DisplayFor(modelItem => item.Branch.BranchName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Branch.BranchId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality.NationalityId)
+                @Html.DisplayFor(modelItem => item.Nationality.NationalityName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StaffId">Edit</a> |

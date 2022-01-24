@@ -22,7 +22,8 @@ namespace UniversityManagementSystem.Views
         // GET: Professors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Professors.ToListAsync());
+            var applicationDbContext = _context.Professors.Include(p => p.Nationality);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Professors/Details/5
@@ -34,6 +35,7 @@ namespace UniversityManagementSystem.Views
             }
 
             var professor = await _context.Professors
+                .Include(p => p.Nationality)
                 .FirstOrDefaultAsync(m => m.ProfessorId == id);
             if (professor == null)
             {
@@ -46,6 +48,7 @@ namespace UniversityManagementSystem.Views
         // GET: Professors/Create
         public IActionResult Create()
         {
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProfessorId,ProfessorName,ProfessorSurname,ProfessorJob,ProffessorTitle")] Professor professor)
+        public async Task<IActionResult> Create([Bind("ProfessorId,ProfessorName,ProfessorSurname,ProffessorTitle,NationalityId")] Professor professor)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace UniversityManagementSystem.Views
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
             return View(professor);
         }
 
@@ -78,6 +82,7 @@ namespace UniversityManagementSystem.Views
             {
                 return NotFound();
             }
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
             return View(professor);
         }
 
@@ -86,7 +91,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProfessorId,ProfessorName,ProfessorSurname,ProfessorJob,ProffessorTitle")] Professor professor)
+        public async Task<IActionResult> Edit(int id, [Bind("ProfessorId,ProfessorName,ProfessorSurname,ProffessorTitle,NationalityId")] Professor professor)
         {
             if (id != professor.ProfessorId)
             {
@@ -113,6 +118,7 @@ namespace UniversityManagementSystem.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
             return View(professor);
         }
 
@@ -125,6 +131,7 @@ namespace UniversityManagementSystem.Views
             }
 
             var professor = await _context.Professors
+                .Include(p => p.Nationality)
                 .FirstOrDefaultAsync(m => m.ProfessorId == id);
             if (professor == null)
             {

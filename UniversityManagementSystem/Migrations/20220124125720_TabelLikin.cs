@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace UniversityManagementSystem.Migrations
 {
-    public partial class juih : Migration
+    public partial class TabelLikin : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,15 +47,17 @@ namespace UniversityManagementSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Assessments",
+                name: "Billss",
                 columns: table => new
                 {
-                    AssessmentId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                    BillsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BillsName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BillsDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Assessments", x => x.AssessmentId);
+                    table.PrimaryKey("PK_Billss", x => x.BillsId);
                 });
 
             migrationBuilder.CreateTable(
@@ -104,18 +106,24 @@ namespace UniversityManagementSystem.Migrations
                 {
                     NationalityId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NationalityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NationalityId1 = table.Column<int>(type: "int", nullable: true)
+                    NationalityName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Nationalitys", x => x.NationalityId);
-                    table.ForeignKey(
-                        name: "FK_Nationalitys_Nationalitys_NationalityId1",
-                        column: x => x.NationalityId1,
-                        principalTable: "Nationalitys",
-                        principalColumn: "NationalityId",
-                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    PaymentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PaymentMode = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.PaymentId);
                 });
 
             migrationBuilder.CreateTable(
@@ -282,7 +290,6 @@ namespace UniversityManagementSystem.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StaffName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StaffRole = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StartJob = table.Column<DateTime>(type: "datetime2", nullable: false),
                     BranchId = table.Column<int>(type: "int", nullable: false),
                     NationalityId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -395,6 +402,34 @@ namespace UniversityManagementSystem.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Assessments",
+                columns: table => new
+                {
+                    AssessmentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StudentCode = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ExamId = table.Column<int>(type: "int", nullable: false),
+                    GradeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assessments", x => x.AssessmentId);
+                    table.ForeignKey(
+                        name: "FK_Assessments_Exams_ExamId",
+                        column: x => x.ExamId,
+                        principalTable: "Exams",
+                        principalColumn: "ExamId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Assessments_Grades_GradeId",
+                        column: x => x.GradeId,
+                        principalTable: "Grades",
+                        principalColumn: "GradeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -435,6 +470,16 @@ namespace UniversityManagementSystem.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Assessments_ExamId",
+                table: "Assessments",
+                column: "ExamId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Assessments_GradeId",
+                table: "Assessments",
+                column: "GradeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Departments_StaffId",
                 table: "Departments",
                 column: "StaffId");
@@ -453,11 +498,6 @@ namespace UniversityManagementSystem.Migrations
                 name: "IX_Exams_ProgramUniversityId",
                 table: "Exams",
                 column: "ProgramUniversityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Nationalitys_NationalityId1",
-                table: "Nationalitys",
-                column: "NationalityId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Professors_NationalityId",
@@ -511,16 +551,16 @@ namespace UniversityManagementSystem.Migrations
                 name: "Assessments");
 
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "Billss");
 
             migrationBuilder.DropTable(
-                name: "Exams");
+                name: "Departments");
 
             migrationBuilder.DropTable(
                 name: "Feedbacks");
 
             migrationBuilder.DropTable(
-                name: "Grades");
+                name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "Students");
@@ -533,6 +573,12 @@ namespace UniversityManagementSystem.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Exams");
+
+            migrationBuilder.DropTable(
+                name: "Grades");
 
             migrationBuilder.DropTable(
                 name: "Staffs");
