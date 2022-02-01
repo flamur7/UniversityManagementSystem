@@ -28,6 +28,7 @@ namespace UniversityManagementSystem.Data
         public virtual DbSet<TodoItem> TodoItems { get; set; }
         public virtual DbSet<Bills> Billss { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }
