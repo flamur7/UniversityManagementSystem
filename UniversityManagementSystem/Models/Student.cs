@@ -12,6 +12,7 @@ namespace UniversityManagementSystem.Models
         public string StudentName { get; set; }
         public string ParentName { get; set; }
         public string Surname { get; set; }
+        public string Image { get; set; }
 
         public string Birthplace { get; set; }
         [Display(Name = "Program")]

@@ -35,6 +35,11 @@
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" type="file"/>
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Birthplace" class="control-label"></label>
                 <input asp-for="Birthplace" class="form-control" />
                 <span asp-validation-for="Birthplace" class="text-danger"></span>
@@ -56,6 +61,10 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div class="col-4"></div>
+            <div class="col-6">
+            <img src="~/@Model.Image" width="300px" height="290px" style="border-radius: 5px;border: 1px solid #efefef" />
             </div>
         </form>
     </div>

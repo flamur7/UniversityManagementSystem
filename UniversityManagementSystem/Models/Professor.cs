@@ -11,7 +11,7 @@ namespace UniversityManagementSystem.Models
         public string ProfessorName { get; set; }
         public string ProfessorSurname { get; set; }
         public string ProffessorTitle { get; set; }
-
+        public string Image { get; set; }
 
         [Display(Name = "Nationality")]
         public int NationalityId { get; set; }

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +16,12 @@ namespace UniversityManagementSystem.Views
     public class StaffsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public StaffsController(ApplicationDbContext context)
+        public StaffsController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Staffs
@@ -59,17 +64,33 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffId,StaffName,StaffRole,StartJob,BranchId,NationalityId")] Staff staff)
+        public async Task<IActionResult> Create([Bind("StaffId,StaffName,StaffRole,Image,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
         {
-            if (ModelState.IsValid)
+            var searchStaff = _context.Staffs.FirstOrDefault(p => p.StaffId == staff.StaffId);
+            if (searchStaff != null)
             {
-                _context.Add(staff);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
+                return View(staff);
             }
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
-            return View(staff);
+
+            if (image != null)
+            {
+                var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                staff.Image = "Images/" + image.FileName;
+            }
+
+            if (image == null)
+            {
+                staff.Image = "Image/noimage.png";
+            }
+            _context.Add(staff);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+            _context.Add(staff);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Staffs/Edit/5
@@ -95,7 +116,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StaffId,StaffName,StaffRole,StartJob,BranchId,NationalityId")] Staff staff)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffId,StaffName,StaffRole,Image,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
         {
             if (id != staff.StaffId)
             {
@@ -106,6 +127,17 @@ namespace UniversityManagementSystem.Views
             {
                 try
                 {
+                    if (image != null)
+                    {
+                        var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                        await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                        staff.Image = "Images/" + image.FileName;
+                    }
+
+                    if (image == null)
+                    {
+                        staff.Image = "Images/noimage.png";
+                    }
                     _context.Update(staff);
                     await _context.SaveChangesAsync();
                 }
@@ -122,6 +154,7 @@ namespace UniversityManagementSystem.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
             ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
             return View(staff);

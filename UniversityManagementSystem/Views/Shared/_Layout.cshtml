@@ -31,6 +31,24 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     </environment>
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/css/templatemo-hexashop.css">
+
+    <link rel="stylesheet" href="~/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="~/css/lightbox.css">
+    <!--
+
+    TemplateMo 571 Hexashop
+
+    https://templatemo.com/tm-571-hexashop
+
+    -->
 </head>
 <body>
     <header>
@@ -71,6 +89,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Exams" asp-action="Index">Exams</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="ToDoItems" asp-action="Index">Orders</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -82,7 +103,10 @@
             @RenderBody()
         </main>
     </div>
-
+    <br />
+    <br />
+    <br />
+    <br />
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - UniversityManagementSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

@@ -1,8 +1,10 @@
-﻿@model IEnumerable<UniversityManagementSystem.Models.TodoItem>
+﻿@using System.Collections.Generic;
+@using UniversityManagementSystem.Models;
 
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var completed = (List<TodoItem>)ViewData["completed"];
+    var todo = (List<TodoItem>)ViewData["todo"];
 }
 
 <h1>Index</h1>
@@ -10,39 +12,60 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Comment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Completed)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Completed)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TodoItemId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TodoItemId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TodoItemId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="container">
+    <div class="row">
+        <h3>TodoList</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Comment</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach(var item in todo){
+                <tr>
+                  <th scope="row">@item.Id</th>
+                  <td>@item.Name</td>
+                  <td>@item.Comment</td>
+                  <td>
+                      <a asp-controller="TodoItems" asp-action="Toggle" asp-route-id="@item.Id">Complete</a> | 
+                      <a asp-controller="TodoItems" asp-action="Edit" asp-route-id="@item.Id">Edit</a> | 
+                      <a asp-controller="TodoItems" asp-action="Confirm" asp-route-id="@item.Id">Delete</a>
+                  </td>
+                </tr>               
+            }
+          </tbody>
+        </table>
+    </div>
+        <div class="row">
+        <h3>Completed</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Comment</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach(var item in completed){
+                <tr>
+                  <th scope="row">@item.Id</th>
+                  <td>@item.Name</td>
+                  <td>@item.Comment</td>
+                  <td>
+                      <a asp-controller="TodoItems" asp-action="toggle" asp-route-id="@item.Id">Undo</a> | 
+                      <a asp-controller="TodoItems" asp-action="Edit" asp-route-id="@item.Id">Edit</a> | 
+                      <a asp-controller="TodoItems" asp-action="Confirm" asp-route-id="@item.Id">Delete</a>
+                  </td>
+                </tr>               
+            }
+          </tbody>
+        </table>
+    </div>
+</div>

@@ -34,6 +34,11 @@
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Birthplace" class="control-label"></label>
                 <input asp-for="Birthplace" class="form-control" />
                 <span asp-validation-for="Birthplace" class="text-danger"></span>

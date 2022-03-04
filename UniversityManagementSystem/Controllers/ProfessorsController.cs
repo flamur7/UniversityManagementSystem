@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +16,12 @@ namespace UniversityManagementSystem.Views
     public class ProfessorsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ProfessorsController(ApplicationDbContext context)
+        public ProfessorsController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Professors
@@ -57,16 +62,32 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProfessorId,ProfessorName,ProfessorSurname,ProffessorTitle,NationalityId")] Professor professor)
+        public async Task<IActionResult> Create([Bind("ProfessorId,ProfessorName,ProfessorSurname,ProffessorTitle,Image,NationalityId")] Professor professor, IFormFile image)
         {
-            if (ModelState.IsValid)
+            var searchProfessors = _context.Professors.FirstOrDefault(p => p.ProfessorId == professor.ProfessorId);
+            if (searchProfessors != null)
             {
-                _context.Add(professor);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
+                return View(professor);
             }
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
-            return View(professor);
+
+            if (image != null)
+            {
+                var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                professor.Image = "Images/" + image.FileName;
+            }
+
+            if (image == null)
+            {
+                professor.Image = "Image/noimage.png";
+            }
+            _context.Add(professor);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+            _context.Add(professor);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Professors/Edit/5
@@ -91,7 +112,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProfessorId,ProfessorName,ProfessorSurname,ProffessorTitle,NationalityId")] Professor professor)
+        public async Task<IActionResult> Edit(int id, [Bind("ProfessorId,ProfessorName,ProfessorSurname,ProffessorTitle,Image,NationalityId")] Professor professor, IFormFile image)
         {
             if (id != professor.ProfessorId)
             {
@@ -102,6 +123,17 @@ namespace UniversityManagementSystem.Views
             {
                 try
                 {
+                    if (image != null)
+                    {
+                        var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                        await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                        professor.Image = "Images/" + image.FileName;
+                    }
+
+                    if (image == null)
+                    {
+                        professor.Image = "Images/noimage.png";
+                    }
                     _context.Update(professor);
                     await _context.SaveChangesAsync();
                 }
@@ -118,8 +150,8 @@ namespace UniversityManagementSystem.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
-            return View(professor);
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", professor.NationalityId);
+                return View(professor);
         }
 
         // GET: Professors/Delete/5

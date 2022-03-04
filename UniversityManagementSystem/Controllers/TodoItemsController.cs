@@ -1,153 +1,101 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using UniversityManagementSystem.Data;
+using TodoList;
 using UniversityManagementSystem.Models;
 
-namespace UniversityManagementSystem.Views
+namespace UniversityManagementSystem.Controllers
 {
-    public class TodoItemsController : Controller
+    [Route("[controller]/[action]")]
+    public class ToDoItemsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-
-        public TodoItemsController(ApplicationDbContext context)
+        
+        public IActionResult Index()
         {
-            _context = context;
+            ViewData["completed"] = Todo.List.Where(x => x.Completed == true).ToList();
+            ViewData["todo"] = Todo.List.Where(x => x.Completed == false).ToList();
+            return View();
         }
 
-        // GET: TodoItems
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.TodoItems.ToListAsync());
-        }
-
-        // GET: TodoItems/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var todoItem = await _context.TodoItems
-                .FirstOrDefaultAsync(m => m.TodoItemId == id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-
-            return View(todoItem);
-        }
-
-        // GET: TodoItems/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TodoItems/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TodoItemId,Name,Comment,Completed")] TodoItem todoItem)
+        public IActionResult Create(TodoItem item)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(todoItem);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TodoItem last = Todo.List.LastOrDefault();
+                if (last == null)
+                {
+                    item.Id = 1;
+                }
+                else
+                {
+                    item.Id = last.Id + 1;
+                }
+                Todo.List.Add(item);
+                return RedirectToAction("Index");
             }
-            return View(todoItem);
+            return View(item);
         }
 
-        // GET: TodoItems/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet("{id}")]
+        public IActionResult Edit(int id)
         {
-            if (id == null)
+            TodoItem item = Todo.List.Where(x => x.Id == id).FirstOrDefault();
+            if (item != null)
             {
-                return NotFound();
+                return View(item);
             }
-
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                return NotFound();
-            }
-            return View(todoItem);
+            return RedirectToAction("Index");
         }
 
-        // POST: TodoItems/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TodoItemId,Name,Comment,Completed")] TodoItem todoItem)
+        [HttpPost("{id}")]
+        public IActionResult Edit(TodoItem item)
         {
-            if (id != todoItem.TodoItemId)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                TodoItem existig = Todo.List.Where(x => x.Id == item.Id).FirstOrDefault();
+                if (existig != null)
                 {
-                    _context.Update(todoItem);
-                    await _context.SaveChangesAsync();
+                    existig.Name = item.Name;
+                    existig.Comment = item.Comment;
+                    existig.Completed = item.Completed;
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TodoItemExists(todoItem.TodoItemId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
-            return View(todoItem);
+            return View(item);
         }
 
-        // GET: TodoItems/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpGet("{id}")]
+        public IActionResult Toggle(int id)
         {
-            if (id == null)
+            TodoItem item = Todo.List.Where(x => x.Id == id).FirstOrDefault();
+            if (item != null)
             {
-                return NotFound();
+                item.Completed = !item.Completed;
             }
+            return RedirectToAction("Index");
+        }
 
-            var todoItem = await _context.TodoItems
-                .FirstOrDefaultAsync(m => m.TodoItemId == id);
-            if (todoItem == null)
+        [HttpGet("{id}")]
+        public IActionResult Delete(int id)
+        {
+            Todo.List.RemoveAll(x => x.Id == id);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult Confirm(int id)
+        {
+            TodoItem item = Todo.List.Where(x => x.Id == id).FirstOrDefault();
+            if (item != null)
             {
-                return NotFound();
+                return View(item);
             }
-
-            return View(todoItem);
-        }
-
-        // POST: TodoItems/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool TodoItemExists(int id)
-        {
-            return _context.TodoItems.Any(e => e.TodoItemId == id);
+            return RedirectToAction("Index");
         }
     }
 }

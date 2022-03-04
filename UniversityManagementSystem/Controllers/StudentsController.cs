@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +16,12 @@ namespace UniversityManagementSystem.Views
     public class StudentsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public StudentsController(ApplicationDbContext context)
+        public StudentsController(ApplicationDbContext context, IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Students
@@ -61,20 +66,38 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Birthday,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student)
+        public async Task<IActionResult> Create([Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
         {
-            if (ModelState.IsValid)
+            var searchStudent = _context.Students.FirstOrDefault(p => p.StudentId == student.StudentId);
+            if (searchStudent != null)
             {
-                _context.Add(student);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
+                return View(student);
             }
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
-            ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
-            return View(student);
+
+            if (image != null)
+            {
+                var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                student.Image = "Images/" + image.FileName;
+            }
+
+            if (image == null)
+            {
+                student.Image = "Image/noimage.png";
+            }
+            _context.Add(student);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+            _context.Add(student);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
+
+     
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -99,7 +122,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Birthday,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
         {
             if (id != student.StudentId)
             {
@@ -110,6 +133,17 @@ namespace UniversityManagementSystem.Views
             {
                 try
                 {
+                    if (image != null)
+                    {
+                        var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                        await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                        student.Image = "Images/" + image.FileName;
+                    }
+
+                    if (image == null)
+                    {
+                        student.Image = "Images/noimage.png";
+                    }
                     _context.Update(student);
                     await _context.SaveChangesAsync();
                 }
