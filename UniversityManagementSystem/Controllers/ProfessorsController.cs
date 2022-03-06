@@ -85,9 +85,6 @@ namespace UniversityManagementSystem.Views
             _context.Add(professor);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-            _context.Add(professor);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         // GET: Professors/Edit/5

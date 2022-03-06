@@ -3,16 +3,30 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int intCount = 0;
+    int intSudentId = 222357849;
 }
 
-<h1>Index</h1>
+<br />
+<br />
+<h3 style="text-align:center; font-size: 26px; font-family: serif;">List of students</h3>
+<br />
+<br />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+
+<a asp-action="Create" asp-route-id="@Model" data-toggle="modal" data-target="#exampleModal" >Create</a>
+
 <table class="table">
-    <thead>
-        <tr>
+    <thead style="font-size: 17px; font-family: serif;">
+        <tr style="text-align:center;">
+            <th>
+                #
+            </th>
+            <th>
+                Student Id
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.PersonalNumber)
             </th>
@@ -26,23 +40,22 @@
                 @Html.DisplayNameFor(model => model.Surname)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Birthplace)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProgramUniversity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nationality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Branch)
+                @Html.DisplayNameFor(model => model.Birthday)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+    intCount = intCount +1;
+    intSudentId = intSudentId +1;
+        <tr style="font-size: 16px; font-family: serif; text-align:center;">
+            <td>
+                @intCount
+            </td>
+            <td style="    background: #d2dee2; font-weight: bold; text-align:center;">
+                @intSudentId
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PersonalNumber)
             </td>
@@ -56,23 +69,24 @@
                 @Html.DisplayFor(modelItem => item.Surname)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Birthplace)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramUniversity.ProgramUniversityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality.NationalityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Branch.BranchName)
+                @Html.DisplayFor(modelItem => item.Birthday)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+
+                <form asp-action="Delete" asp-controller="Students" asp-route-id="@item.StudentId" style="display: contents;" method="post"> 
+                    <button type="submit" class="btn btn-danger" onclick="return functionConfirm(this)">
+                        Delete
+                    </button>
+                </form>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/swal.js"></script>
+}

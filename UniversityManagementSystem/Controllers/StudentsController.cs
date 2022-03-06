@@ -66,34 +66,35 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
+        public async Task<IActionResult> Create([Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Email,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
         {
-            var searchStudent = _context.Students.FirstOrDefault(p => p.StudentId == student.StudentId);
-            if (searchStudent != null)
+            if (ModelState.IsValid)
             {
-                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
-                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
-                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
-                return View(student);
-            }
+                var searchStudent = _context.Students.FirstOrDefault(p => p.StudentId == student.StudentId);
+                if (searchStudent != null)
+                {
+                    ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
+                    ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
+                    ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
+                    return View(student);
+                }
 
-            if (image != null)
-            {
-                var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
-                await image.CopyToAsync(new FileStream(name, FileMode.Create));
-                student.Image = "Images/" + image.FileName;
-            }
+                if (image != null)
+                {
+                    var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                    await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                    student.Image = "Images/" + image.FileName;
+                }
 
-            if (image == null)
-            {
-                student.Image = "Image/noimage.png";
+                if (image == null)
+                {
+                    student.Image = "Image/noimage.png";
+                }
+                _context.Add(student);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            _context.Add(student);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-            _context.Add(student);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return View(student);
         }
 
 
@@ -122,7 +123,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Email,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
         {
             if (id != student.StudentId)
             {

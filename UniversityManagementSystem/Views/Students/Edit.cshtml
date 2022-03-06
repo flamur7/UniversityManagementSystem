@@ -2,77 +2,86 @@
 
 @{
     ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Student</h4>
+<h3>Change student data </h3>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="StudentId" />
-            <div class="form-group">
-                <label asp-for="PersonalNumber" class="control-label"></label>
-                <input asp-for="PersonalNumber" class="form-control" />
-                <span asp-validation-for="PersonalNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StudentName" class="control-label"></label>
-                <input asp-for="StudentName" class="form-control" />
-                <span asp-validation-for="StudentName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ParentName" class="control-label"></label>
-                <input asp-for="ParentName" class="form-control" />
-                <span asp-validation-for="ParentName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Surname" class="control-label"></label>
-                <input asp-for="Surname" class="form-control" />
-                <span asp-validation-for="Surname" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" type="file"/>
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Birthplace" class="control-label"></label>
-                <input asp-for="Birthplace" class="form-control" />
-                <span asp-validation-for="Birthplace" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProgramUniversityId" class="control-label"></label>
-                <select asp-for="ProgramUniversityId" class="form-control" asp-items="ViewBag.ProgramUniversityId"></select>
-                <span asp-validation-for="ProgramUniversityId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NationalityId" class="control-label"></label>
-                <select asp-for="NationalityId" class="form-control" asp-items="ViewBag.NationalityId"></select>
-                <span asp-validation-for="NationalityId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BranchId" class="control-label"></label>
-                <select asp-for="BranchId" class="form-control" asp-items="ViewBag.BranchId"></select>
-                <span asp-validation-for="BranchId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-            <div class="col-4"></div>
-            <div class="col-6">
-            <img src="~/@Model.Image" width="300px" height="290px" style="border-radius: 5px;border: 1px solid #efefef" />
-            </div>
-        </form>
-    </div>
-</div>
+                <form asp-action="Edit" method="post">
+                    <div class="p-4 rounded border">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="StudentId" />
+                    <div class="modal-body">
+                        <div id="smartwizard">
+                            <div class="mt-4" style="font-size: 20px; font-family: serif;">
+                                <div id="step-1">
+                                    <div class="row">
+                                        <div class="col-md-6" > <label asp-for="PersonalNumber" class="control-label"></label>
+                                                                <input type="number" asp-for="PersonalNumber" class="form-control" placeholder="Personal Number" required style="border: 1px solid black"> 
+                                                                <span asp-validation-for="PersonalNumber" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="Email" class="control-label"></label>
+                                                                <input  asp-for="Email" class="form-control" placeholder="Email"  style="border: 1px solid black"> 
+                                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"> <label asp-for="StudentName" class="control-label"></label>
+                                                                <input type="text" asp-for="StudentName" class="form-control" placeholder="Student Name" required style="border: 1px solid black">
+                                                                <span asp-validation-for="StudentName" class="text-danger"></span>    
+                                        </div>
+                                        <div class="col-md-6">  <label asp-for="ParentName" class="control-label"></label>
+                                                                <input type="text" asp-for="ParentName" class="form-control" placeholder="Parent Name" required style="border: 1px solid black"> 
+                                                                <span asp-validation-for="ParentName" class="text-danger"></span>     
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="step-2">
+                                    <div class="row">
+                                        <div class="col-md-6"> <label asp-for="Surname" class="control-label"></label>
+                                                                <input type="text" asp-for="Surname" class="form-control" placeholder="Surname" required style="border: 1px solid black;"> </div>
+                                        <div class="col-md-6">  <label asp-for="Image" class="control-label"></label>
+                                                                <input asp-for="Image" class="form-control" type="file" style="border: 1px solid black;"/> </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"> <label asp-for="Birthplace" class="control-label"></label>
+                                                                <input type="text" asp-for="Birthplace" class="form-control" placeholder="Birthplace" required style="border: 1px solid black"> </div>
+                                        <div class="col-md-6"> <label asp-for="Birthday" class="control-label"></label>
+                                                                <input type="date" asp-for="Birthday" class="form-control" placeholder="Birthday" required style="border: 1px solid black"> </div>
+                                    </div>
+                                </div>
+                                <div id="step-3">
+                                    <div class="row">
+                                        @*//Per me shtu inpute ne form*@
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label asp-for="BranchId" class="control-label"></label>
+                                            <select asp-for="BranchId" class ="form-control" asp-items="ViewBag.BranchId" style="border: 1px solid black"></select> </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                                        <div class="col-md-6">  <label asp-for="ProgramUniversityId" class="control-label"></label>
+                                                                <select asp-for="ProgramUniversityId" class ="form-control" asp-items="ViewBag.ProgramUniversityId" style="border: 1px solid black" ></select> </div>
+                                    </div>
+                                </div>
+                                <div id="step-4">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">   <label asp-for="NationalityId" class="control-label"></label>
+                                                                <select asp-for="NationalityId" placeholder="Card Number" class ="form-control" asp-items="ViewBag.NationalityId" style="border: 1px solid black"></select> </div>
+                                    </div>
+                                </div>
+                                <br /><div id="step-5" class="">
+                                    <input type="submit" value="Edit" class="btn btn-success" />
+                                    <a asp-action="Index" class="btn btn-dark" style="background:color;">&nbsp;Back&nbsp;</a>
+                                </div><br />
+                                <div class="col-4"></div>
+                                <div class="col-6">
+                                    <img src="~/@Model.Image" width="300px" height="290px" style="border-radius: 5px;border: 1px solid #efefef" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                  </form>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

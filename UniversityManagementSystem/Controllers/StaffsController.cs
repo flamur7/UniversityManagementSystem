@@ -88,9 +88,6 @@ namespace UniversityManagementSystem.Views
             _context.Add(staff);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-            _context.Add(staff);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         // GET: Staffs/Edit/5

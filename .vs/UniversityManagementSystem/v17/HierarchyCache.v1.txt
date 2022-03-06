@@ -3,9 +3,9 @@ i:{00000000-0000-0000-0000-000000000000}:UniversityManagementSystem.sln
 ++UniversityManagementSystem
 i:{00000000-0000-0000-0000-000000000000}:UniversityManagementSystem
 ++Connected Services 
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1003
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1337
 ++Dependencies
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1002
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1336
 ++Properties
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\properties\
 ++wwwroot
@@ -13,9 +13,25 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 ++css
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\css\
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\bootstrap\dist\css\
+++login.css
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\css\login.css
+++site.css
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\css\site.css
+++Images
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\
+++1.jpg
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\1.jpg
+++noimage.png
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\noimage.png
+++s.PNG
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\s.png
 ++js
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\js\
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\bootstrap\dist\js\
+++login.js
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\js\login.js
+++site.js
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\js\site.js
 ++lib
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\
 ++favicon.ico
@@ -62,7 +78,6 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 ++Index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\areas\identity\pages\account\manage\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\role\index.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\assessments\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\branches\index.cshtml
@@ -75,6 +90,7 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\professors\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\programuniversities\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\staffs\index.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\index.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\index.cshtml
 ++ManageNavPages.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\areas\identity\pages\account\manage\managenavpages.cs
@@ -151,6 +167,8 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\gradescontroller.cs
 ++HomeController.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\homecontroller.cs
+++HomeController1.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\homecontroller1.cs
 ++NationalitiesController.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\nationalitiescontroller.cs
 ++ProfessorsController.cs
@@ -163,16 +181,28 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\staffscontroller.cs
 ++StudentsController.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\studentscontroller.cs
-++TodoItemsController.cs
+++ToDoItemsController.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\todoitemscontroller.cs
 ++UserController.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\controllers\usercontroller.cs
 ++Data
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\data\
-++ApplicationDbContext.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\data\applicationdbcontext.cs
 ++Migrations
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\
+++20220124125720_TabelLikin.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220124125720_tabellikin.cs
+++20220201130820_LinkTabels.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201130820_linktabels.cs
+++20220201142000_Imagess.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201142000_imagess.cs
+++20220222113459_TodoItems.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220222113459_todoitems.cs
+++20220304122926_RoleUser.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220304122926_roleuser.cs
+++20220304122926_RoleUser.Designer.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220304122926_roleuser.designer.cs
+++ApplicationDbContextModelSnapshot.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\applicationdbcontextmodelsnapshot.cs
 ++Models
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\models\
 ++ApplicationUser.cs
@@ -213,6 +243,8 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\models\todoitem.cs
 ++UserRoleMaping.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\models\userrolemaping.cs
+++Utility
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\utility\
 ++Views
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\
 ++Assessments
@@ -243,7 +275,6 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\role\assignuserrole.cshtml
 ++Create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\role\create.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\assessments\create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\branches\create.cshtml
@@ -255,10 +286,10 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\professors\create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\programuniversities\create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\staffs\create.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\create.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\create.cshtml
 ++Delete.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\role\delete.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\delete.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\delete.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\assessments\delete.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\branches\delete.cshtml
@@ -270,10 +301,9 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\professors\delete.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\programuniversities\delete.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\staffs\delete.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\delete.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\delete.cshtml
 ++Edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\role\edit.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\assessments\edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\branches\edit.cshtml
@@ -285,6 +315,7 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\professors\edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\programuniversities\edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\staffs\edit.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\edit.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\edit.cshtml
 ++Shared
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\shared\
@@ -298,8 +329,13 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\staffs\
 ++Students
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\
+++TodoItems
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\
+++User
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\
+++Active.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\active.cshtml
 ++Details.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\details.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\details.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\assessments\details.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\branches\details.cshtml
@@ -311,13 +347,7 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\professors\details.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\programuniversities\details.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\staffs\details.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\details.cshtml
-++TodoItems
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\
-++User
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\
-++Active.cshtml
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\active.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\students\details.cshtml
 ++Locout.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\user\locout.cshtml
 ++appsettings.json
@@ -328,8 +358,10 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\scaffoldingreadme.txt
 ++Startup.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\startup.cs
+++Todo.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\todo.cs
 ++SQL Server Express LocalDB (Local) (ConnectionStrings:DefaultConnection)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1026
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1360
 ++Analyzers
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:analyzers
 ++Frameworks
@@ -340,10 +372,6 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:packages
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\properties\launchsettings.json
 ++serviceDependencies.json
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\properties\servicedependencies.json
-++site.css
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\css\site.css
-++site.js
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\js\site.js
 ++bootstrap
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\bootstrap\
 ++jquery
@@ -410,14 +438,22 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\areas\identity\pages\account\resetpasswordconfirmation.cshtml.cs
 ++Error.cshtml.cs
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\areas\identity\pages\error.cshtml.cs
-++20220124125720_TabelLikin.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220124125720_tabellikin.cs
-++20220201130820_LinkTabels.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201130820_linktabels.cs
-++ApplicationDbContextModelSnapshot.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\applicationdbcontextmodelsnapshot.cs
+++ApplicationDbContext.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\data\applicationdbcontext.cs
+++20220124125720_TabelLikin.Designer.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220124125720_tabellikin.designer.cs
+++20220201130820_LinkTabels.Designer.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201130820_linktabels.designer.cs
+++20220201142000_Imagess.Designer.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201142000_imagess.designer.cs
+++20220222113459_TodoItems.Designer.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220222113459_todoitems.designer.cs
+++SessionExtensions.cs
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\utility\sessionextensions.cs
 ++Privacy.cshtml
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\home\privacy.cshtml
+++Confirm.cshtml
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\views\todoitems\confirm.cshtml
 ++appsettings.Development.json
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\appsettings.development.json
 ++Microsoft.AspNetCore.Analyzers
@@ -441,21 +477,23 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 ++Microsoft.NETCore.App
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\microsoft.netcore.app
 ++Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1021
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1355
 ++Microsoft.AspNetCore.Identity.EntityFrameworkCore (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>2324
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1356
 ++Microsoft.AspNetCore.Identity.UI (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>2273
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1359
+++Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation (5.0.13)
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1367
 ++Microsoft.EntityFrameworkCore (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1018
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1352
 ++Microsoft.EntityFrameworkCore.Design (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1020
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1354
 ++Microsoft.EntityFrameworkCore.SqlServer (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>2221
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1353
 ++Microsoft.EntityFrameworkCore.Tools (5.0.13)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>2272
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1357
 ++Microsoft.VisualStudio.Web.CodeGeneration.Design (5.0.2)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1024
+i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>1358
 ++serviceDependencies.local.json
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\properties\servicedependencies.local.json
 ++dist
@@ -471,10 +509,6 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\jquery-validation\license.md
 ++jquery.validate.unobtrusive.js
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
-++20220124125720_TabelLikin.Designer.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220124125720_tabellikin.designer.cs
-++20220201130820_LinkTabels.Designer.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201130820_linktabels.designer.cs
 ++jquery.js
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\jquery\dist\jquery.js
 ++additional-methods.js
@@ -531,22 +565,3 @@ i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitym
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 ++bootstrap.bundle.min.js.map
 i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
-++Secrets.json (Local)
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>2871
-++Secrets.json (Local) dependency is detected
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:>2872
-++Utility
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\utility\
-++SessionExtensions.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\utility\sessionextensions.cs
-++NewFolder
-++Images
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\
-++20220201142000_Imagess.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201142000_imagess.cs
-++20220201142000_Imagess.Designer.cs
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\migrations\20220201142000_imagess.designer.cs
-++noimage.png
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\noimage.png
-++s.PNG
-i:{2131503c-800e-4535-bd33-f9aabc7bed16}:c:\users\admin\source\repos\universitymanagementsystem\universitymanagementsystem\wwwroot\images\s.png
