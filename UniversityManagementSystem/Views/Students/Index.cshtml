@@ -16,7 +16,8 @@
 
 
 
-<a asp-action="Create" asp-route-id="@Model" data-toggle="modal" data-target="#exampleModal" >Create</a>
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+    data-url="@Url.Action("Create")">Create</button>*@
 
 <table class="table">
     <thead style="font-size: 17px; font-family: serif;">
@@ -53,7 +54,7 @@
             <td>
                 @intCount
             </td>
-            <td style="    background: #d2dee2; font-weight: bold; text-align:center;">
+            <td style="    background: #edf4f6; font-weight: bold; text-align:center;">
                 @intSudentId
             </td>
             <td>
@@ -75,7 +76,7 @@
                 <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
 
-                <form asp-action="Delete" asp-controller="Students" asp-route-id="@item.StudentId" style="display: contents;" method="post"> 
+                <form asp-action="Delete" asp-route-id="@item.StudentId" style="display: contents;" method="post"> 
                     <button type="submit" class="btn btn-danger" onclick="return functionConfirm(this)">
                         Delete
                     </button>
@@ -89,4 +90,6 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/js/swal.js"></script>
+    <script src="~/js/ajax.js"></script>
 }
+

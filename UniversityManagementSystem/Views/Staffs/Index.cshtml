@@ -8,14 +8,19 @@
 
 }
 
-<h1>Index</h1>
+<br />
+<br />
+<h3 style="text-align:center; font-size: 26px; font-family: serif;">List of staffs</h3>
+<br />
+<br />
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
-    <thead>
-        <tr>
+    <thead style="font-size: 17px; font-family: serif;">
+        <tr style="text-align:center;">
             <th>
                 #
             </th>
@@ -37,7 +42,7 @@
     <tbody>
 @foreach (var item in Model) {
     intCount = intCount +1;
-        <tr>
+        <tr style="font-size: 16px; font-family: serif; text-align:center;">
             <td>
                 @intCount
             </td>
@@ -57,9 +62,18 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StaffId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.StaffId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StaffId">Delete</a>
+                <form asp-action="Delete" asp-route-id="@item.StaffId" style="display: contents;" method="post"> 
+                    <button type="submit" class="btn btn-danger" onclick="return functionConfirm(event)">
+                        Delete
+                    </button>
+                </form>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/swal.js"></script>
+}

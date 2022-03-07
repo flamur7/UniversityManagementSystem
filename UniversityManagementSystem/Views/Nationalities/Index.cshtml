@@ -3,6 +3,8 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    int intCount = 0;
 }
 
 <h1>Index</h1>
@@ -11,8 +13,11 @@
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
+    <thead style="font-size: 17px; font-family: serif;">
+        <tr style="text-align:center;">
+            <th>
+                #
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.NationalityName)
             </th>
@@ -21,7 +26,11 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+    intCount = intCount +1;
+        <tr style="font-size: 16px; font-family: serif; text-align:center;">
+            <td>
+                @intCount
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NationalityName)
             </td>

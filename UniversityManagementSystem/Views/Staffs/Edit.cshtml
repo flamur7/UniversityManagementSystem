@@ -5,54 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>Staff</h4>
+<h3>Change Staff data </h3>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="StaffId" />
-            <div class="form-group">
-                <label asp-for="StaffName" class="control-label"></label>
-                <input asp-for="StaffName" class="form-control" />
-                <span asp-validation-for="StaffName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="StaffRole" class="control-label"></label>
-                <input asp-for="StaffRole" class="form-control" />
-                <span asp-validation-for="StaffRole" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" type="file"/>
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BranchId" class="control-label"></label>
-                <select asp-for="BranchId" class="form-control" asp-items="ViewBag.BranchId"></select>
-                <span asp-validation-for="BranchId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NationalityId" class="control-label"></label>
-                <select asp-for="NationalityId" class="form-control" asp-items="ViewBag.NationalityId"></select>
-                <span asp-validation-for="NationalityId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-            <div class="col-4"></div>
-            <div class="col-6">
-            <img src="~/@Model.Image" width="300px" height="290px" style="border-radius: 5px;border: 1px solid #efefef" />
-            </div>
-        </form>
-    </div>
-</div>
+ <form asp-action="Edit" method="post">
+                    <div class="p-4 rounded border">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="StaffId" />
+                    <div class="modal-body">
+                        <div id="smartwizard">
+                            <div class="mt-4" style="font-size: 20px; font-family: serif;">
+                                <div id="step-1">
+                                    <div class="row">
+                                        <div class="col-md-6" > <label asp-for="StaffName" class="control-label" style="font-size:16px"></label>
+                                                                <input type="text" asp-for="StaffName" class="form-control" required style="border: 1px solid black; font-size: 15px; font-weight: bold" />
+                                                                <span asp-validation-for="StaffName" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="StaffRole" class="control-label" style="font-size:16px"></label>
+                                                                <input  asp-for="StaffRole" class="form-control"   style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="StaffRole" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6"> <label asp-for="Image" class="control-label" style="font-size:16px"></label>
+                                                                <input asp-for="Image" class="form-control" type="file" style="border: 1px solid black;"/> </div>
+                                        
+                                        <div class="col-md-6"> <label asp-for="PhoneNumber" class="control-label" style="font-size:16px"></label>
+                                                                <input  asp-for="PhoneNumber" class="form-control"  style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>                     
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6"> <label asp-for="NationalityId" class="control-label" style="font-size:16px"></label>
+                                                                <select asp-for="NationalityId"  class ="form-control" asp-items="ViewBag.NationalityId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+                                        
+                                        <div class="col-md-6"> <label asp-for="BranchId" class="control-label" style="font-size:16px"></label>
+                                                                <select asp-for="BranchId" class ="form-control" asp-items="ViewBag.BranchId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" > <label asp-for="Email" class="control-label" style="font-size:16px"></label>
+                                                                <input type="text" asp-for="Email" class="form-control" required style="border: 1px solid black; font-size: 15px; font-weight: bold" />
+                                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="StaredJob" class="control-label" style="font-size:16px"></label>
+                                                                <input  asp-for="StaredJob" class="form-control"  style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="StaredJob" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="step-4">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"> 
+                                    </div>
+                                </div>
+                                <br /><div id="step-5" class="">
+                                    <input type="submit" value="Edit" class="btn btn-success" />
+                                    <a asp-action="Index" class="btn btn-dark" style="background:color;">&nbsp;Back&nbsp;</a>
+                                </div><br />
+                                <div class="col-4"></div>
+                                <div class="col-6">
+                                    <img src="~/@Model.Image" width="300px" height="290px" style="border-radius: 5px;border: 1px solid #efefef" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                  </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

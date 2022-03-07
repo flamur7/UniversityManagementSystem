@@ -500,11 +500,6 @@ C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSyste
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\Professors\Details.cshtml.g.cs
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\Professors\Edit.cshtml.g.cs
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\Professors\Index.cshtml.g.cs
-C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Create.cshtml.g.cs
-C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Delete.cshtml.g.cs
-C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Details.cshtml.g.cs
-C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Edit.cshtml.g.cs
-C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Index.cshtml.g.cs
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\Role\Assign.cshtml.g.cs
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\Role\AssignUserRole.cshtml.g.cs
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\Role\Create.cshtml.g.cs
@@ -548,4 +543,9 @@ C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSyste
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\ref\UniversityManagementSystem.dll
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\UniversityManagementSystem.pdb
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\UniversityManagementSystem.genruntimeconfig.cache
+C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Create.cshtml.g.cs
+C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Delete.cshtml.g.cs
+C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Details.cshtml.g.cs
+C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Edit.cshtml.g.cs
+C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\Razor\Views\ProgramUniversities\Index.cshtml.g.cs
 C:\Users\Admin\source\repos\UniversityManagementSystem\UniversityManagementSystem\obj\Debug\net5.0\UniversityManagementSystem.csproj.AssemblyReference.cache

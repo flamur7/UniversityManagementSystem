@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using UniversityManagementSystem.Data;
 using UniversityManagementSystem.Models;
 
-namespace UniversityManagementSystem.Views
+namespace UniversityManagementSystem.Controllers
 {
     public class ProgramUniversitiesController : Controller
     {

@@ -9,9 +9,21 @@ namespace UniversityManagementSystem.Models
     {
         [Key]
         public int StaffId { get; set; }
+
+        [Display(Name ="Full name")]
         public string StaffName { get; set; }
+
+        [Display(Name = "Role")]
         public string StaffRole { get; set; }
         public string Image { get; set; }
+
+        [Display(Name = "Phone Number")]
+        public int PhoneNumber { get; set; }
+        public string Email { get; set; }
+
+        [Display(Name = "Started Job")]
+        [DataType(DataType.Date)]
+        public DateTime StaredJob { get; set; }
 
         [Display(Name = "Branch Work")]
         public int BranchId { get; set; }
