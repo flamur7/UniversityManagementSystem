@@ -1,0 +1,39 @@
+﻿.main-nav {
+    background-color: white;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+}
+
+    .main-nav a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        text-decoration: none;
+        font-size: 10px;
+    }
+
+        .main-nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+.navbar-nav {
+    margin: auto;
+    padding: 0;
+    overflow: hidden;
+    color: red;
+  
+}
+main-nav li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+@media screen and (max-width: 600px) {
+    .main-nav a, .main-nav {
+        float: none;
+        display: block;
+    }
+}
+

@@ -1,0 +1,138 @@
+.tabela {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.tabela-header {
+    background-color: #2a2a2a;
+    color: #FFFFFF;
+    text-align: left;
+    padding-left: 20px;
+}
+td {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.photo {
+    width: 20px;
+}
+
+.input-labela {
+    padding: 20px 0px 20px 0px !important;
+    text-align: right;
+}
+.marginTitulliLeft{
+    padding-left: 50px;
+}
+.select-input {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 12px 15px;
+    margin: 13px 0 8px 0;
+    border-radius: .25rem;
+    background-clip: padding-box;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.forma {
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+/*    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);*/
+    padding: 30px 50px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.modali-kontenjeti {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+#modali_kontenjeti.show  {
+    pointer-events: auto;
+    opacity: 1 !important;
+}
+
+.edit_modali_kontenjeti {
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+    .edit_modali_kontenjeti.Editshow{
+        pointer-events: auto;
+        opacity: 1 !important;
+    }
+
+
+.butoni {
+    border-radius: 20px;
+    border: 1px solid #2a2a2a;
+    background-color: #2a2a2a;
+    color: #FFFFFF;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 25px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin: 5px 5px 5px 5px;
+}
+
+    .butoni:hover {
+        color: #FFFFFF;
+        background-color: #3f3f3f;
+        border-color: #3f3f3f
+    }
+
+.tooltipi {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+    .tooltipi .tooltipitext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    .tooltipi:hover .tooltipitext {
+        visibility: visible;
+    }
