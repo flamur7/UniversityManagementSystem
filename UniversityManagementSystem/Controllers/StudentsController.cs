@@ -52,50 +52,103 @@ namespace UniversityManagementSystem.Views
             return View(student);
         }
 
-        // GET: Students/Create
-        public IActionResult Create()
+        // GET: Students/AddOrEdit
+        // GET: Students/AddOrEdit/5
+        public async Task<IActionResult> AddOrEdit(int id = 0)
         {
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
-            ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName");
-            return View();
+            if (id == 0)
+            {
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName");
+                return View(new Student());
+            }
+            else
+            {
+                var student = await _context.Students.FindAsync(id);
+                if (student == null)
+                {
+                    return NotFound();
+                }
+
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName");
+                return View(student);
+            }
         }
 
-        // POST: Students/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Email,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("StudentId,PersonalNumber,StudentName,ParentName,Surname,Image,Birthday,Email,Birthplace,ProgramUniversityId,NationalityId,BranchId")] Student student, IFormFile image)
         {
             if (ModelState.IsValid)
             {
-                var searchStudent = _context.Students.FirstOrDefault(p => p.StudentId == student.StudentId);
-                if (searchStudent != null)
+                if (id == 0)
                 {
-                    ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
-                    ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
-                    ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
-                    return View(student);
-                }
+                    var searchStudent = _context.Students.FirstOrDefault(p => p.StudentId == student.StudentId);
+                    if (searchStudent != null)
+                    {
+                        ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
+                        ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
+                        ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
+                        return View(student);
+                    }
 
-                if (image != null)
-                {
-                    var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
-                    await image.CopyToAsync(new FileStream(name, FileMode.Create));
-                    student.Image = "Images/" + image.FileName;
-                }
+                    if (image != null)
+                    {
+                        var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                        await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                        student.Image = "Images/" + image.FileName;
+                    }
 
-                if (image == null)
-                {
-                    student.Image = "Image/noimage.png";
+                    if (image == null)
+                    {
+                        student.Image = "Image/noimage.png";
+                    }
+                    _context.Add(student);
+                    await _context.SaveChangesAsync();
                 }
-                _context.Add(student);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                else
+                {
+                    try
+                    {
+                        if (image != null)
+                        {
+                            var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                            await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                            student.Image = "Images/" + image.FileName;
+                        }
+
+                        if (image == null)
+                        {
+                            student.Image = "Images/noimage.png";
+                        }
+                        _context.Update(student);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!StudentExists(student.StudentId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", student.BranchId);
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", student.NationalityId);
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", student.ProgramUniversityId);
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_StudentsTablePartialView", _context.Students.ToList()) });
+
             }
-            return View(student);
+            return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", student) });
         }
+        
 
 
      

@@ -62,6 +62,7 @@ namespace UniversityManagementSystem.Controllers
                 {
                     existig.Name = item.Name;
                     existig.Comment = item.Comment;
+                    existig.Comment = item.Branch;
                     existig.Completed = item.Completed;
                 }
                 return RedirectToAction("Index");

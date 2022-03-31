@@ -1,0 +1,87 @@
+﻿@model IEnumerable<UniversityManagementSystem.Models.Staff>
+
+@{
+    int intCount = 0;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaffRole)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StaredJob)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nationality)
+            </th>*@
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+     intCount = intCount + 1;
+        <tr>
+            <td>
+                @intCount
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaffRole)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StaredJob)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.Branch.BranchId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nationality.NationalityId)
+            </td>*@
+           <td style="padding: 3px;">
+                    <div class="btn-group">
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Staffs",new { id = item.StaffId },Context.Request.Scheme)',' Edit')" class="butoni tooltipi btn" style="background-color: green;color: white;margin-right: 7px;border-radius: 0px;width:90px">
+                            <span class="tooltipitext">Change</span>
+                        </a><br>
+                        <!--DELETE-->
+                        <form asp-action="Delete" asp-route-id="@item.StaffId" method="post">
+                            <button type="submit" class="butoni tooltipi btn" onclick="return functionConfirm(this)" style="background-color:red; color:white;border-radius: 0px;width:90px">
+                               <span class="tooltipitext">Delete</span>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

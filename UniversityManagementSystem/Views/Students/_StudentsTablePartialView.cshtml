@@ -9,7 +9,7 @@
         <tr>
             <td>
                 #
-            </td>
+            </td> 
             <th>
                 @Html.DisplayNameFor(model => model.PersonalNumber)
             </th>
@@ -86,14 +86,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Branch.BranchId)
             </td>*@
-             <td style="width: 150px">
+             <td style="padding: 3px;">
                     <div class="btn-group">
-                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Students",new { id = item.StudentId },Context.Request.Scheme)',' Edit')" class="butoni tooltipi btn btn-danger">
-                            <span class="tooltipitext">Edit</span>
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Students",new { id = item.StudentId },Context.Request.Scheme)',' Edit')" class="butoni tooltipi btn" style="background-color: green;color: white;margin-right: 7px;border-radius: 0px;width:90px">
+                            <span class="tooltipitext">Change</span>
                         </a><br>
                         <!--DELETE-->
                         <form asp-action="Delete" asp-route-id="@item.StudentId" method="post">
-                            <button type="submit" class="butoni tooltipi btn btn-info" onclick="return functionConfirm(this)">
+                            <button type="submit" class="butoni tooltipi btn" onclick="return functionConfirm(this)" style="background-color:red; color:white;border-radius: 0px;width:90px">
                                <span class="tooltipitext">Delete</span>
                             </button>
                         </form>

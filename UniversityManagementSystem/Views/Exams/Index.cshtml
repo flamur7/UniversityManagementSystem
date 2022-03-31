@@ -1,54 +1,44 @@
 ﻿@model IEnumerable<UniversityManagementSystem.Models.Exam>
+@using UniversityManagementSystem.Models;
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="titulli1">Exams</h3>
+    </div>
+    <div class="col-6 text-end">
+        <a onclick="showInPopup('@Url.Action("AddOrEdit","Exams",null,Context.Request.Scheme)','Add New')" class="btn" style="cursor:pointer; background-color:green; color:white;">Add Exams</a>
+    </div>
+</div>
+<br />
 
-<h1>Index</h1>
+<div id="view-all">
+    @await Html.PartialAsync("_ExamsTablePartialView", Model)
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Subject)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Branch)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProgramUniversity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Professor)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Branch.BranchName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramUniversity.ProgramUniversityName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Professor.ProfessorName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ExamId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ExamId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ExamId">Delete</a>
-            </td>
-        </tr>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
 }
-    </tbody>
-</table>

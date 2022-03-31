@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -51,12 +51,27 @@ namespace UniversityManagementSystem.Views
             return View(staff);
         }
 
-        // GET: Staffs/Create
-        public IActionResult Create()
+        public async Task<IActionResult> AddOrEdit(int id = 0)
         {
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
-            ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
-            return View();
+            if (id == 0)
+            {
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
+                return View(new Staff());
+            }
+            else
+            {
+                var staff = await _context.Staffs.FindAsync(id);
+                if (staff == null)
+                {
+                    return NotFound();
+                }
+
+
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
+                return View(staff);
+            }
         }
 
         // POST: Staffs/Create
@@ -64,34 +79,74 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StaffId,StaffName,StaffRole,Image,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("StaffId,StaffName,StaffRole,Image,Email,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
         {
-            var searchStaff = _context.Staffs.FirstOrDefault(p => p.StaffId == staff.StaffId);
-            if (searchStaff != null)
+            if (ModelState.IsValid)
             {
-                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", staff.BranchId);
-                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName", staff.NationalityId);
-                return View(staff);
-            }
+                if (id == 0)
+                {
+                    var searchStudent = _context.Staffs.FirstOrDefault(p => p.StaffId == staff.StaffId);
+                    if (searchStudent != null)
+                    {
+                        ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                        ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
+                        return View(staff);
+                    }
 
-            if (image != null)
-            {
-                var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
-                await image.CopyToAsync(new FileStream(name, FileMode.Create));
-                staff.Image = "Images/" + image.FileName;
-            }
+                    if (image != null)
+                    {
+                        var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                        await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                        staff.Image = "Images/" + image.FileName;
+                    }
 
-            if (image == null)
-            {
-                staff.Image = "Image/noimage.png";
+                    if (image == null)
+                    {
+                        staff.Image = "Image/noimage.png";
+                    }
+                    _context.Add(staff);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    try
+                    {
+                        if (image != null)
+                        {
+                            var name = Path.Combine(_hostingEnvironment.WebRootPath + "/Images", Path.GetFileName(image.FileName));
+                            await image.CopyToAsync(new FileStream(name, FileMode.Create));
+                            staff.Image = "Images/" + image.FileName;
+                        }
+
+                        if (image == null)
+                        {
+                            staff.Image = "Images/noimage.png";
+                        }
+                        _context.Update(staff);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!StaffExists(staff.StaffId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                }
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["NationalityId"] = new SelectList(_context.Nationalitys, "NationalityId", "NationalityName");
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_StaffsTablePartialView", _context.Staffs.ToList()) });
+
             }
-            _context.Add(staff);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", staff) });
         }
 
         // GET: Staffs/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id) 
         {
             if (id == null)
             {
@@ -113,7 +168,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StaffId,StaffName,StaffRole,Image,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffId,StaffName,StaffRole,Image,Email,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
         {
             if (id != staff.StaffId)
             {

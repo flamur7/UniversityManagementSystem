@@ -47,32 +47,79 @@ namespace UniversityManagementSystem.Views
             return View(exam);
         }
 
-        // GET: Exams/Create
-        public IActionResult Create()
+        public async Task<IActionResult> AddOrEdit(int id = 0)
         {
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
-            ViewData["ProfessorId"] = new SelectList(_context.Professors, "ProfessorId", "ProfessorName");
-            ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityName", "ProgramUniversityName");
-            return View();
-        }
+            if (id == 0)
+            {
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["ProfessorId"] = new SelectList(_context.Professors, "ProfessorId", "ProfessorName");
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityName", "ProgramUniversityName");
+                return View(new Exam());
+            }
+            else
+            {
+                var exam = await _context.Exams.FindAsync(id);
+                if (exam == null)
+                {
+                    return NotFound();
+                }
 
-        // POST: Exams/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["ProfessorId"] = new SelectList(_context.Professors, "ProfessorId", "ProfessorName");
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityName", "ProgramUniversityName");
+                return View(exam);
+            }
+        }
+        mos naj najana e kolonave e ka ata not null ncuk osht problemi qe so mir qekejo rreshti 79
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ExamId,Subject,BranchId,ProgramUniversityId,ProfessorId")] Exam exam)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("ExamId,Subject,BranchId,ProgramUniversityId,ProfessorId")] Exam exam)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(exam);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (id == 0)
+                {
+                    var searchExam = _context.Exams.FirstOrDefault(p => p.ExamId == exam.ExamId);
+                    if (searchExam != null)
+                    {
+                        ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                        ViewData["ProfessorId"] = new SelectList(_context.Professors, "ProfessorId", "ProfessorName");
+                        ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityName", "ProgramUniversityName");
+                        return View(exam);
+                    }
+
+                    _context.Add(exam);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    try
+                    {
+                        _context.Update(exam);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        if (!ExamExists(exam.ExamId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                
+                }
+                ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName");
+                ViewData["ProfessorId"] = new SelectList(_context.Professors, "ProfessorId", "ProfessorName");
+                ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityName", "ProgramUniversityName");
+                return Json(new { isValid = true, html = Helper.RenderRazorViewToString(this, "_ExamsTablePartialView", _context.Exams.ToList()) });
+
             }
-            ViewData["BranchId"] = new SelectList(_context.Branches, "BranchId", "BranchName", exam.BranchId);
-            ViewData["ProfessorId"] = new SelectList(_context.Professors, "ProfessorId", "ProfessorName", exam.ProfessorId);
-            ViewData["ProgramUniversityId"] = new SelectList(_context.ProgramUniversity, "ProgramUniversityId", "ProgramUniversityName", exam.ProgramUniversityId);
-            return View(exam);
+            return Json(new { isValid = false, html = Helper.RenderRazorViewToString(this, "AddOrEdit", exam) });
+
         }
 
         // GET: Exams/Edit/5

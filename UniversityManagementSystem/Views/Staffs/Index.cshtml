@@ -1,79 +1,43 @@
 ﻿@model IEnumerable<UniversityManagementSystem.Models.Staff>
+@using UniversityManagementSystem.Models;
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
-    int intCount = 0;
-
 }
-
 <br />
 <br />
-<h3 style="text-align:center; font-size: 26px; font-family: serif;">List of staffs</h3>
 <br />
+<div class="row">
+    <div class="col-6">
+        <h3 class="titulli1">Staff</h3>
+    </div>
+    <div class="col-6 text-end">
+        <a onclick="showInPopup('@Url.Action("AddOrEdit","Staffs",null,Context.Request.Scheme)','Add New')" class="btn" style="cursor:pointer; background-color:green; color:white;">New Member</a>
+</div>
 <br />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div id="view-all">
+    @await Html.PartialAsync("_StaffsTablePartialView", Model)
+</div>
 
-<table class="table">
-    <thead style="font-size: 17px; font-family: serif;">
-        <tr style="text-align:center;">
-            <th>
-                #
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StaffRole)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Branch)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nationality)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-    intCount = intCount +1;
-        <tr style="font-size: 16px; font-family: serif; text-align:center;">
-            <td>
-                @intCount
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StaffRole)
-            </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Branch.BranchName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality.NationalityName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StaffId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StaffId">Details</a> |
-                <form asp-action="Delete" asp-route-id="@item.StaffId" style="display: contents;" method="post"> 
-                    <button type="submit" class="btn btn-danger" onclick="return functionConfirm(event)">
-                        Delete
-                    </button>
-                </form>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/js/swal.js"></script>
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
 }

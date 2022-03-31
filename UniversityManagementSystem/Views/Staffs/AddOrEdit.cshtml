@@ -1,0 +1,122 @@
+﻿@model UniversityManagementSystem.Models.Staff
+@{
+    ViewData["Title"] = "Edit";
+     Layout = null;
+}
+<form asp-action="AddOrEdit" asp-route-id="@Model.StaffId" onsubmit="return jQuaryAjaxPost(this)" autocomplete="off" class="forma">
+    <div class="p-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h3>@ViewBag.mgs</h3>
+@if(Model.StaffId == 0){
+                             
+                            <div class="mt-4" style="font-size: 17px; font-family: serif;">
+                                <div id="step-1">
+                                   <div class="row">
+                                        <div class="col-md-6" > <label asp-for="StaffName" class="control-label" style="font-size:16px"></label>
+                                                                <input type="text" asp-for="StaffName" class="form-control" placeholder="Name & Surname" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="StaffName" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="Email" class="control-label" style="font-size:16px"></label>
+                                                                <input  type="email" asp-for="Email" class="form-control" placeholder="Email"  style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"> <label asp-for="StaffRole" class="control-label" style="font-size:16px"></label>
+                                                                <input type="text" asp-for="StaffRole" class="form-control" placeholder="Role" required style="border: 1px solid black;font-size: 15px; font-weight: bold;">
+                                                                <span asp-validation-for="StaffRole" class="text-danger"></span>    
+                                        </div>
+                                        <div class="col-md-6">  <label asp-for="PhoneNumber" class="control-label" style="font-size:16px"></label>
+                                                                <input type="tel" asp-for="PhoneNumber" class="form-control" placeholder="+383 XX-XXX-XXX" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>     
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="step-2">
+                                    <div class="row">
+                                        <div class="col-md-6"> <label asp-for="StaredJob" class="control-label" style="font-size:16px"></label>
+                                                                <input type="date" asp-for="StaredJob" class="form-control" placeholder="Surname" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> </div>
+                                        <div class="col-md-6">  <label asp-for="Image" class="control-label" style="font-size:16px"></label>
+                                                                <input asp-for="Image" class="form-control" type="file" style="border: 1px solid black;font-size: 15px; font-weight: bold;"/> </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                    </div>
+                                </div>
+                                <div id="step-3">
+                                    <div class="row">
+                                        @*//Per me shtu inpute ne form*@
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label asp-for="BranchId" class="control-label" style="font-size:16px"></label>
+                                            <select asp-for="BranchId" class ="form-control" asp-items="ViewBag.BranchId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+                                    </div>
+                                </div>
+                                <div id="step-4">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">   <label asp-for="NationalityId" class="control-label" style="font-size:16px"></label>
+                                                                <select asp-for="NationalityId" placeholder="Card Number" class ="form-control" asp-items="ViewBag.NationalityId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+                                    </div>
+                                </div>
+                        </div>
+}
+else{
+   <input type="hidden" asp-for="StaffId" />
+                           <div class="mt-4" style="font-size: 20px; font-family: serif;">
+                                <div id="step-1">
+                                   <div class="row">
+                                        <div class="col-md-6" > <label asp-for="StaffName" class="control-label" style="font-size:16px"></label>
+                                                                <input type="text" asp-for="StaffName" class="form-control" required placeholder="Name & Surname" style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="StaffName" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="Email" class="control-label" style="font-size:16px"></label>
+                                                                <input  type="email" asp-for="Email" class="form-control" placeholder="Email"  style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6"> <label asp-for="StaffRole" class="control-label" style="font-size:16px"></label>
+                                                                <input type="text" asp-for="StaffRole" class="form-control" placeholder="Role" required style="border: 1px solid black;font-size: 15px; font-weight: bold;">
+                                                                <span asp-validation-for="StaffRole" class="text-danger"></span>    
+                                        </div>
+                                        <div class="col-md-6">  <label asp-for="PhoneNumber" class="control-label" style="font-size:16px"></label>
+                                                                <input type="tel" asp-for="PhoneNumber" class="form-control" placeholder="+383 XX-XXX-XXX" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="PhoneNumber" class="text-danger"></span>     
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="step-2">
+                                    <div class="row">
+                                        <div class="col-md-6"> <label asp-for="StaredJob" class="control-label" style="font-size:16px"></label>
+                                                                <input type="date" asp-for="StaredJob" class="form-control" placeholder="Surname" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> </div>
+                                        <div class="col-md-6">  <label asp-for="Image" class="control-label" style="font-size:16px"></label>
+                                                                <input asp-for="Image" class="form-control" type="file" style="border: 1px solid black;font-size: 15px; font-weight: bold;"/> </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                    </div>
+                                </div>
+                                <div id="step-3">
+                                    <div class="row">
+                                        @*//Per me shtu inpute ne form*@
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label asp-for="BranchId" class="control-label" style="font-size:16px"></label>
+                                            <select asp-for="BranchId" class ="form-control" asp-items="ViewBag.BranchId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+                                    </div>
+                                </div>
+                                <div id="step-4">
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">   <label asp-for="NationalityId" class="control-label" style="font-size:16px"></label>
+                                                                <select asp-for="NationalityId" class ="form-control" asp-items="ViewBag.NationalityId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+                                    </div>
+                                </div>
+                        </div>
+}
+        <br/>
+        <div class="form-group">
+            <a asp-action="Index" class="btn" style="background-color:grey; color:white">Cancel</a>
+            <input type="submit" class="btn" style="background-color:green; color:white" value="Register" />
+        </div>
+    </div>
+</form>

@@ -17,7 +17,7 @@ namespace UniversityManagementSystem.Models
         public string StaffRole { get; set; }
         public string Image { get; set; }
 
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Phone")]
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
 

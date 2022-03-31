@@ -114,15 +114,30 @@
             @RenderBody()
         </main>
     </div>
+
     <br />
     <br />
     <br />
     <br />
-    <footer class="border-top footer text-muted">
+
+    <div class="modal" tabindex="-1" role="dialog" id="Popup-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:black; color:white">
+                    <h3 class="modal-title titulli1"></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - UniversityManagementSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
