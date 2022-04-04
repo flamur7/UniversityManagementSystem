@@ -31,6 +31,12 @@ namespace UniversityManagementSystem.Views
             return View(await applicationDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> StaffUserPage()
+        {
+            var applicationDbContext = _context.Staffs.Include(s => s.Branch).Include(s => s.Nationality);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
         // GET: Staffs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -79,7 +85,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddOrEdit(int id, [Bind("StaffId,StaffName,StaffRole,Image,Email,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
+        public async Task<IActionResult> AddOrEdit(int id, [Bind("StaffId,StaffName,StaffRole,Image,PhoneNumber,Email,StaredJob,BranchId,NationalityId")] Staff staff, IFormFile image)
         {
             if (ModelState.IsValid)
             {
@@ -168,7 +174,7 @@ namespace UniversityManagementSystem.Views
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StaffId,StaffName,StaffRole,Image,Email,StartJob,BranchId,NationalityId")] Staff staff, IFormFile image)
+        public async Task<IActionResult> Edit(int id, [Bind("StaffId,StaffName,StaffRole,Image,PhoneNumber,Email,StaredJob,BranchId,NationalityId")] Staff staff, IFormFile image)
         {
             if (id != staff.StaffId)
             {

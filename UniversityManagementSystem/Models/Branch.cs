@@ -7,6 +7,8 @@ namespace UniversityManagementSystem.Models
     {
         [Key]
         public int BranchId { get; set; }
+
+        [Display(Name = "Branches")]
         public string BranchName { get; set; }
 
         public virtual ICollection<Student> Students { get; set; }

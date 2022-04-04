@@ -1,0 +1,94 @@
+﻿@model UniversityManagementSystem.Models.Assessment
+@{
+    ViewData["Title"] = "Edit";
+     Layout = null;
+}
+<form asp-action="AddOrEdit" asp-route-id="@Model.AssessmentId" onsubmit="return jQuaryAjaxPost(this)" autocomplete="off" class="forma">
+    <div class="p-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h3>@ViewBag.mgs</h3>
+@if(Model.AssessmentId == 0){
+                            
+                            <div class="mt-4" style="font-size: 20px; font-family: serif;">
+                                <div id="step-1">
+                                   <div class="row">
+                                        <div class="col-md-6" > <label asp-for="StudentCode" class="control-label" style="font-size:16px"></label>
+                                                                <input type="number" asp-for="StudentCode" class="form-control" placeholder="Personal Number" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="StudentCode" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="FullName" class="control-label" style="font-size:16px"></label>
+                                                                <input  asp-for="FullName" class="form-control" placeholder="Email"  style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="FullName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div id="step-2">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6">  <label asp-for="Image" class="control-label" style="font-size:16px"></label>
+                                                                <input asp-for="Image" class="form-control" type="file" style="border: 1px solid black;font-size: 15px; font-weight: bold;"/> </div>
+                                    </div>
+                                    
+                                </div>
+                                <div id="step-3">
+                                    <div class="row">
+                                        @*//Per me shtu inpute ne form*@
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label asp-for="ExamId" class="control-label" style="font-size:16px"></label>
+                                            <select asp-for="ExamId" class ="form-control" asp-items="ViewBag.ExamId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+
+                                        <div class="col-md-6">  <label asp-for="GradeId" class="control-label" style="font-size:16px"></label>
+                                                                <select asp-for="GradeId" class ="form-control" asp-items="ViewBag.GradeId" style="border: 1px solid black;font-size: 15px; font-weight: bold;" ></select> </div>
+                                    </div>
+                                </div>
+                        </div>
+}
+else{
+   <input type="hidden" asp-for="AssessmentId" />
+                           <div class="mt-4" style="font-size: 20px; font-family: serif;">
+                                <div id="step-1">
+                                   <div class="row">
+                                        <div class="col-md-6" > <label asp-for="StudentCode" class="control-label" style="font-size:16px"></label>
+                                                                <input type="number" asp-for="StudentCode" class="form-control" placeholder="Personal Number" required style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="StudentCode" class="text-danger"></span>
+                                        </div>
+                                        <div class="col-md-6"> <label asp-for="FullName" class="control-label" style="font-size:16px"></label>
+                                                                <input  asp-for="FullName" class="form-control" placeholder="Email"  style="border: 1px solid black;font-size: 15px; font-weight: bold;"> 
+                                                                <span asp-validation-for="FullName" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div id="step-2">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6">  <label asp-for="Image" class="control-label" style="font-size:16px"></label>
+                                                                <input asp-for="Image" class="form-control" type="file" style="border: 1px solid black;font-size: 15px; font-weight: bold;"/> </div>
+                                    </div>
+                                    
+                                </div>
+                                <div id="step-3">
+                                    <div class="row">
+                                        @*//Per me shtu inpute ne form*@
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-md-6">
+                                            <label asp-for="ExamId" class="control-label" style="font-size:16px"></label>
+                                            <select asp-for="ExamId" class ="form-control" asp-items="ViewBag.ExamId" style="border: 1px solid black;font-size: 15px; font-weight: bold;"></select> </div>
+
+                                        <div class="col-md-6">  <label asp-for="GradeId" class="control-label" style="font-size:16px"></label>
+                                                                <select asp-for="GradeId" class ="form-control" asp-items="ViewBag.GradeId" style="border: 1px solid black;font-size: 15px; font-weight: bold;" ></select> </div>
+                                    </div>
+                                </div>
+                        </div>
+}
+        <br/>
+        <div class="form-group">
+           <a asp-action="Index" class="btn" style="background-color:grey; color:white">Cancel</a>
+            <input type="submit" class="btn" style="background-color:green; color:white" value="Register" />
+        </div>
+    </div>
+</form>

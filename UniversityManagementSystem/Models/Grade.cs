@@ -7,6 +7,8 @@ namespace UniversityManagementSystem.Models
     {
         [Key]
         public int GradeId { get; set; }
+
+        [Display(Name = "Grades")]
         public string GradeName { get; set; }
 
         public virtual ICollection<Assessment> Assessments { get; set; }

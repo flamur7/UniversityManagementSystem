@@ -4,8 +4,8 @@
     int intCount = 0;
 }
 
-<table class="table">
-    <thead>
+<table class="table" style="font-size:15px">
+     <thead class="thead-dark">
         <tr>
             <th>
                 #
@@ -34,7 +34,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Nationality)
             </th>*@
-            <th>Action</th>
+            <th style="text-align:center">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -68,19 +68,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Nationality.NationalityId)
             </td>*@
-           <td style="padding: 3px;">
+          <td style="padding: 3px;font-size:13px;text-align:center">
                     <div class="btn-group">
-                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Staffs",new { id = item.StaffId },Context.Request.Scheme)',' Edit')" class="butoni tooltipi btn" style="background-color: green;color: white;margin-right: 7px;border-radius: 0px;width:90px">
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Staffs",new { id = item.StaffId },Context.Request.Scheme)',' Edit')" class="butoni tooltipi btn btn-primary" style="color:white;margin-right: 7px;border-radius: 0px;width:90px;font-size:15px">
                             <span class="tooltipitext">Change</span>
                         </a><br>
                         <!--DELETE-->
+                        <a asp-action="Details" asp-route-id="@item.StaffId" class="butoni tooltipi btn btn-info" style="color:white;margin-right: 7px;border-radius: 0px;width:90px;font-size:15px">Details</a>
                         <form asp-action="Delete" asp-route-id="@item.StaffId" method="post">
-                            <button type="submit" class="butoni tooltipi btn" onclick="return functionConfirm(this)" style="background-color:red; color:white;border-radius: 0px;width:90px">
+                            <button type="submit" class="butoni tooltipi btn btn-danger" onclick="return functionConfirm(this)" style="color:white;border-radius: 0px;width:90px;font-size:15px">
                                <span class="tooltipitext">Delete</span>
                             </button>
                         </form>
                     </div>
-                </td>
+         </td>
         </tr>
 }
     </tbody>

@@ -11,15 +11,19 @@ namespace UniversityManagementSystem.Models
         public int ExamId { get; set; }
         public string Subject { get; set; }
 
+        public string Image { get; set; }
+
         [Display(Name = "Branch")]
         public int BranchId { get; set; }
         [ForeignKey("BranchId")]
         public virtual Branch Branch { get; set; }
 
+
         [Display(Name = "Program")]
         public int ProgramUniversityId { get; set; }
         [ForeignKey("ProgramUniversityId")]
         public virtual ProgramUniversity ProgramUniversity { get; set; }
+
 
         [Display(Name = "Professor")]
         public int ProfessorId { get; set; }

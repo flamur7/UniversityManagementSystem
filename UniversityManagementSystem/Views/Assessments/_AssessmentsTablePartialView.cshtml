@@ -1,0 +1,63 @@
+﻿@model IEnumerable<UniversityManagementSystem.Models.Assessment>
+
+@{
+    int intCount = 0;
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.StudentCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            intCount = intCount + 1;
+            <tr>
+                <td>
+                    @intCount
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade.GradeName)
+            </td>
+            <td style="padding: 3px;">
+                    <div class="btn-group">
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Assessments",new { id = item.AssessmentId },Context.Request.Scheme)',' Edit')" class="butoni tooltipi btn" style="background-color: black;color: white;margin-right: 7px;border-radius: 0px;width: 90px;border: 1px solid black;border-radius: 15px;">
+                            <span class="tooltipitext">Change</span>
+                        </a><br>
+                        <!--DELETE-->
+                        <form asp-action="Delete" asp-route-id="@item.AssessmentId" method="post">
+                            <button type="submit" class="butoni tooltipi btn btn-danger" onclick="return functionConfirm(this)" style="border-radius: 0px;width:90px">
+                               <span class="tooltipitext">Delete</span>
+                            </button>
+                        </form>
+                    </div>
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

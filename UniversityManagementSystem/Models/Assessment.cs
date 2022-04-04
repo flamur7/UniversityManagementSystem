@@ -8,9 +8,13 @@ namespace UniversityManagementSystem.Models
         [Key]
         public int AssessmentId { get; set; }
 
+        [Display(Name = "Student ID")]
         public int StudentCode { get; set; }
+
+        [Display(Name = "Full name")]
         public string FullName { get; set; }
 
+        public string Image { get; set; }
 
         [Display(Name = "Exam")]
         public int ExamId { get; set; }

@@ -23,6 +23,7 @@ namespace UniversityManagementSystem.Models
 
         [Display(Name = "Started Job")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime StaredJob { get; set; }
 
         [Display(Name = "Branch Work")]
@@ -34,6 +35,6 @@ namespace UniversityManagementSystem.Models
         public int NationalityId { get; set; }
         [ForeignKey("NationalityId")]
         public virtual Nationality Nationality { get; set; }
-        public virtual ICollection<Department> Departments { get; set; }
+        
     }
 }

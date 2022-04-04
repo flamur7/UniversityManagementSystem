@@ -7,6 +7,8 @@ namespace UniversityManagementSystem.Models
     {
         [Key]
         public int NationalityId { get; set; }
+
+        [Display(Name = "Nationality")]
         public string NationalityName { get; set; }
 
 

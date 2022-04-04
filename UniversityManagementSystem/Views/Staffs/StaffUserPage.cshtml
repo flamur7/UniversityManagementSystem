@@ -1,0 +1,75 @@
+﻿@model IEnumerable<UniversityManagementSystem.Models.Staff>
+
+@{
+    ViewData["Title"] = "Index";
+ 
+}
+<section id="team" class="pb-5">
+    <div class="container">
+        <h5 class="section-title h1">Our Staff</h5>
+        <div class="row">
+            <!-- Team member -->
+            @foreach (var item in Model){
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" >
+                    <div class="mainflip flip-0">
+                       
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="~/@item.Image" alt="card image"></p><br>
+                                    <h3 class="card-title">@item.StaffName</h3>
+                                    <p class="card-text" style="font-size:17px">@item.StaffRole</p> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside" style="    width: 100%;
+    height: 100%;">
+                            <div class="card">
+                                <div class="card-body text-left mt-4">
+                                     <h3 class="card-title text-center">@item.StaffName</h3><hr>
+                                     <p class="card-text" style="font-size:17px">Part of our staff since: <b>@item.StaredJob.ToShortDateString()</b></p>
+                                     <p class="card-text" style="font-size:17px">Branch: <b>@item.Branch.BranchName</b></p>
+                                     <p class="card-text" style="font-size:17px">Nationality: <b>@item.Nationality.NationalityName</b></p><br><br>
+                                     <p class="card-text" style="font-size:17px">Contact: <b>@item.Email</b></p><br><br>
+                                     <ul class="list-inline text-center">
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                <i class="fa fa-skype"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a class="social-icon text-xs-center" target="_blank" href="https://www.fiverr.com/share/qb8D02">
+                                                <i class="fa fa-google"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </div>
+            }
+            <!-- ./Team member -->
+        </div>
+    </div>
+</section>
+
+
+
+@section Styles{
+	<link rel="stylesheet" href="~/css/Staff.css" />
+}

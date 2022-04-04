@@ -16,7 +16,7 @@ namespace UniversityManagementSystem.Data
 
         public virtual DbSet<Assessment> Assessments { get; set; }
         public virtual DbSet<Branch> Branches { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
+       
         public virtual DbSet<Exam> Exams { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Grade> Grades { get; set; }
@@ -26,8 +26,7 @@ namespace UniversityManagementSystem.Data
         public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<TodoItem> TodoItems { get; set; }
-        public virtual DbSet<Bills> Billss { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
+        
         public virtual DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
     }
